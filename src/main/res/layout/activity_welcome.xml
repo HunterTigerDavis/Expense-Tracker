@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
 
-    <TextView
-        android:id="@+id/usernameDisplay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:text="Welcome "
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/usernameDisplay"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_margin="12dp"-->
+<!--        android:text="Welcome "-->
+<!--        android:textAlignment="center"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--        android:textSize="24sp" />-->
 
     <EditText
         android:id="@+id/incomeField"

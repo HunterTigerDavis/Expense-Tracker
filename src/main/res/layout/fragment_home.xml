@@ -7,47 +7,61 @@
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:id="@+id/annualIncomeDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="top"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/monthlyIncomeDisplay"
-        app:layout_constraintEnd_toEndOf="@+id/monthlyIncomeDisplay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/annualIncomeDisplay"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="4dp"-->
+<!--        android:gravity="top"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/monthlyIncomeDisplay"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/monthlyIncomeDisplay"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/monthlyIncomeDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="top"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/weeklyIncomeDisplay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/monthlyIncomeDisplay"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="4dp"-->
+<!--        android:gravity="top"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/weeklyIncomeDisplay"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/weeklyIncomeDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="top"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/annualIncomeDisplay"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/weeklyIncomeDisplay"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="4dp"-->
+<!--        android:gravity="top"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/annualIncomeDisplay"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
+<!--    <TextView-->
+<!--        android:id="@+id/dailyIncomeDisplay"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="4dp"-->
+<!--        android:gravity="top"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/annualIncomeDisplay"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <com.softmoore.android.graphlib.GraphView
+        android:id="@+id/graph_view"
+        android:layout_width="325dp"
+        android:layout_height="325dp"
+        android:layout_gravity="center_horizontal"/>
     <TextView
-        android:id="@+id/dailyIncomeDisplay"
-        android:layout_width="wrap_content"
+        android:id="@+id/graph_view_label"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="top"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/annualIncomeDisplay"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center_horizontal"
+        android:textStyle="bold"/>
+
+
 </LinearLayout>

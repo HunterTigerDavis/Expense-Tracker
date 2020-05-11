@@ -31,8 +31,10 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("USERNAME");
 
-        TextView usernameDisplay = findViewById(R.id.usernameDisplay);
-        usernameDisplay.setText("Welcome " + username + "!");
+//        TextView usernameDisplay = findViewById(R.id.usernameDisplay);
+//        usernameDisplay.setText("Welcome " + username + "!");
+
+        setTitle("Welcome " + username + "!");
 
         // TODO: Add $ sign in front of user input
         incomeText = findViewById(R.id.incomeField);
