@@ -1,3 +1,3 @@
-# cecs453
+# Expense-Tracker
 
-A repository for projects developed for Android in Java
+A repository for expense tracking app for Android written in Java
