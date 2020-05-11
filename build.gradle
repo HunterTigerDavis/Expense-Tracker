@@ -25,6 +25,10 @@ android {
             minSdkVersion 23
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {

@@ -1,5 +1,6 @@
 package com.example.expenseTracker;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,12 +51,23 @@ public class HomeFragment extends Fragment {
 
         // TODO: Format text w/ graph
         // CREATING THE GRAPH FOR INCOME BREAKDOWN
-        Graph graph = new Graph.Builder().build();
+        // "->" is a lambda expression, used for defining functions
+        Graph graph = new Graph.Builder()
+                .addFunction(x -> 20 - x, Color.RED)
+                // World coordinates defines zoom of graph: xMin, xMax, yMin, yMax
+                .setWorldCoordinates(-1, 21, -1, 21)
+                // Ticks display the ticks within the graph
+                .setXTicks(new double[]{2, 4, 6, 8, 10, 12, 14, 16, 18, 20})
+                .setYTicks(new double[]{2, 4, 6, 8, 10, 12, 14, 16, 18, 20})
+                .build();
         GraphView graphView = view.findViewById(R.id.graph_view);
         graphView.setGraph(graph);
         //setTitle("Empty Graph");
         TextView textView = view.findViewById(R.id.graph_view_label);
-        textView.setText("Graph of Income");
+        textView.setText("Income Graph");
+
+
+        // End of function
         return view;
     }
 
