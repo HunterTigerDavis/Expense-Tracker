@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="title_car_list">Available Cars</string>
+    <string name="title_car_detail">Car Detail</string>
+    <string name="make">Make - Model</string>
+    <string name="last">Last update: </string>
+    <string name="price">Price: </string>
+    <string name="welcome_to_expense_tracker">Welcome to Expense Tracker!</string>
+    <string name="authors">Hunter Davis &amp; Andre Barajas</string>
+</resources>
