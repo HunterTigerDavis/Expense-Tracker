@@ -50,30 +50,30 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="@+id/annualIncomeDisplay"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <com.softmoore.android.graphlib.GraphView
-        android:id="@+id/graph_view1"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center_horizontal"/>
     <TextView
         android:id="@+id/graph_view_label1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textStyle="bold"/>
-
     <com.softmoore.android.graphlib.GraphView
-        android:id="@+id/graph_view2"
+        android:id="@+id/graph_view1"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_gravity="center_horizontal"/>
+
     <TextView
         android:id="@+id/graph_view_label2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textStyle="bold"/>
+    <com.softmoore.android.graphlib.GraphView
+        android:id="@+id/graph_view2"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"/>
+
 
 
 </LinearLayout>
