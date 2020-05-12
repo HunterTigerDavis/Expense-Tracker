@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     // For splash screen:
-    private static int splash_time_out = 3000;
+    private static int splash_time_out = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

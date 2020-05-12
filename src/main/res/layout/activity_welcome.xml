@@ -1,64 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".WelcomeActivity">
-
-<!--    <TextView-->
-<!--        android:id="@+id/usernameDisplay"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_margin="12dp"-->
-<!--        android:text="Welcome "-->
-<!--        android:textAlignment="center"-->
-<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--        android:textSize="24sp" />-->
-
-    <EditText
-        android:id="@+id/incomeField"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Annual Income:"
-        android:inputType="number"
-        android:numeric="decimal" />
+        android:layout_height="match_parent"
+        tools:context=".WelcomeActivity">
 
-    <EditText
-        android:id="@+id/expenseField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Max Daily Expenses:"
-        android:inputType="number" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/usernameDisplay"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_margin="12dp"-->
+    <!--        android:text="Welcome "-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+    <!--        android:textSize="24sp" />-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/incomeWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/savingsField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter Savings Goal:"
-        android:inputType="number" />
+            <EditText
+                android:id="@+id/incomeField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Annual Income:"
+                android:inputType="number"
+                android:maxLength="7" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/calculateButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calculate" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/expenseWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/expenseField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Max Daily Expenses:"
+                android:inputType="number"
+                android:maxLength="7" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/savingsWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/savingsField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Savings Goal:"
+                android:inputType="number"
+                android:maxLength="7" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate" />
 
-    <!--    <Spinner-->
-<!--        android:id="@+id/incomeSpinner"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:entries="Annual" />-->
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</LinearLayout>
+        </FrameLayout>
+
+        <!--    <Spinner-->
+    <!--        android:id="@+id/incomeSpinner"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:entries="Annual" />-->
+
+    </LinearLayout>
+</ScrollView>
