@@ -2,7 +2,9 @@ package com.example.expenseTracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,12 +17,25 @@ public class LoginActivity extends AppCompatActivity {
     // Dictionary of users here:
     public static HashMap<String, String> users = new HashMap();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        users.put("user", "pass"); // default login
-        System.out.println(users.size());
+        // Storing user login data through SharedPreferences
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("user", "pass");
+        editor.commit();
+
+        //users.put("user", "pass"); // default login
+        //System.out.println("User" + users.size());
+
+        // Check if the user is already logged in, if so we skip the login screen and go to welcome
+        if (SaveSharedPreference.getLoggedStatus(getApplicationContext())){
+            Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
+            startActivity(welcomeIntent);
+        }
 
     }
 
@@ -36,13 +51,20 @@ public class LoginActivity extends AppCompatActivity {
             completeToast.show();
         }
         else{ // If they complete both fields, validate with dictionary
-
-            if (users.containsKey(username) && users.get(username).equals(password)){ // If it matches a dictionary entry, temp test right now
-                Intent carListIntent = new Intent(this, WelcomeActivity.class);
-                carListIntent.putExtra("USERNAME", username);
-                startActivity(carListIntent);
+            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+            String testUsername = sharedPref.getString(username, "Username DNE");
+            System.out.println("TEST USERNAME: " + testUsername);
+            if (!testUsername.equals("Username DNE")){
+                // We pass
+                // Set user to logged in
+                SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+                Intent welcomeIntent = new Intent(this, WelcomeActivity.class);
+                welcomeIntent.putExtra("USERNAME", username);
+                welcomeIntent.putExtra("PASSWORD", password);
+                startActivity(welcomeIntent);
             }
             else{
+                // We fail the login
                 Toast invalidToast = Toast.makeText(getApplicationContext(), "Invalid login credentials", Toast.LENGTH_LONG);
                 invalidToast.show();
                 pass.setText(null);

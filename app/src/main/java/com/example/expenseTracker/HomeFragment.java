@@ -79,6 +79,16 @@ public class HomeFragment extends Fragment {
                 new Point(12, annualIncomeInt - 12 * dailyExpenseInt)
         };
 
+        Point[] savingsPoints ={
+                new Point(0, savingsGoalInt),
+                new Point(12, savingsGoalInt)
+        };
+
+        Point[] endPoints={
+          new Point(0, annualIncomeInt - 12 * dailyExpenseInt) ,
+          new Point(12, annualIncomeInt - 12 * dailyExpenseInt)
+        };
+
         Graph lineGraph = new Graph.Builder()
                 .addLineGraph(points, Color.RED)
                 //.addFunction(x -> annualIncomeInt - x * dailyExpenseInt, Color.RED)
@@ -93,9 +103,11 @@ public class HomeFragment extends Fragment {
                 //.setYTicks(new double[]{0, annualIncomeInt*.25, annualIncomeInt*.5, annualIncomeInt*.75, annualIncomeInt})
                 // Setting a label for our max annualIncome
                 // Here we should draw a line for our target savings after a year, we can draw a horizontal line
-                .addFunction(x -> savingsGoalInt, Color.GREEN)
+//                .addFunction(x -> savingsGoalInt, Color.GREEN)
+                .addLineGraph(savingsPoints, Color.GREEN)
                 // Drawing a line for the end result
-                .addFunction(x -> annualIncomeInt - 12 * dailyExpenseInt, Color.BLUE)
+//                .addFunction(x -> annualIncomeInt - 12 * dailyExpenseInt, Color.BLUE)
+                .addLineGraph(endPoints, Color.BLUE)
                 // Labeling our y-axis points of interest
                 .setYLabels(new Label[]{new Label(savingsGoalInt, "Goal"),
                         new Label(annualIncomeInt, "$" + annualIncomeString),

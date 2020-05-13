@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="welcome_to_expense_tracker">Welcome to Expense Tracker!</string>
+    <string name="authors">Hunter Davis &amp; Andre Barajas</string>
+    <!-- SharedPreferences Key for user login data  -->
+    <string name="preference_file_key">com.example.expenseTracker.PREFERENCE_FILE_KEY</string>
+    <!-- Preference Titles -->
+    <string name="settings_header">Settings</string>
+    <string name="about_header">About</string>
+
+    <!-- Preferences -->
+    <string name="edit_username">Edit Username</string>
+    <string name="edit_password">Edit Password</string>
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_basic">BasicActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_settings">Settings</string>
+</resources>

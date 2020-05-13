@@ -1,16 +1,21 @@
 package com.example.expenseTracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -20,21 +25,22 @@ public class WelcomeActivity extends AppCompatActivity {
     private EditText savingsText;
     public static String income, expenses, savings;
     private String[] labels;
+    private androidx.appcompat.widget.Toolbar toolbar;
+    private String username, password;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        Resources res = getResources();
-        labels = res.getStringArray(R.array.incomeEntryOptions);
-
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         Intent intent = getIntent();
-        String username = intent.getStringExtra("USERNAME");
+        username = intent.getStringExtra("USERNAME");
+        password = intent.getStringExtra("PASSWORD");
+//        toolbar.setTitle("Welcome " + username + "!");
 
-//        TextView usernameDisplay = findViewById(R.id.usernameDisplay);
-//        usernameDisplay.setText("Welcome " + username + "!");
 
-        setTitle("Welcome " + username + "!");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         // TODO: Add $ sign in front of user input
         incomeText = findViewById(R.id.incomeField);
@@ -55,6 +61,35 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.settings_button:
+                // Open settings menu
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                settingsIntent.putExtra("USERNAME", username);
+                settingsIntent.putExtra("PASSWORD", password);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.logout_button:
+                // Log the user out and kick to login screen
+                SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
+                Intent loginIntent = new Intent(this, LoginActivity.class);
+                startActivity(loginIntent);
+                return true;
+        }
+        return false;
+    }
+
+
+
+    // This is called when the "Calculate" button is pressed, generates the graphs with current inputs
     private void calculateButtonPressed(){
         income = incomeText.getText().toString().trim();
         expenses = expenseText.getText().toString().trim();

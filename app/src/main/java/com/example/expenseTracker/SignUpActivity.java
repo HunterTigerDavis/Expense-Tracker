@@ -1,5 +1,7 @@
 package com.example.expenseTracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,8 +61,12 @@ public class SignUpActivity extends AppCompatActivity {
         //---------validate form-------------------
         if(!validateAllInputs(userNameInput, passwordInput, passwordInput0, emailInput, cellPhoneInput)) { return; }
         else {
+            // Enter the user into our shared preferences if it passes
+            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString(userNameInput, passwordInput);
             // Write new entry to dictionary
-            LoginActivity.users.put(userNameInput, passwordInput);
+            //LoginActivity.users.put(userNameInput, passwordInput);
 
             Intent loginIntent = new Intent(this, LoginActivity.class);
             startActivity(loginIntent);
@@ -69,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     //-------------Project validation requirements--------------------------
     private boolean validateAllInputs(String userNameInput, String passwordInput,String passwordInput0,String emailInput,String cellPhoneInput) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         boolean isValid = true;
         //-----------Java util library for regex--------------
         //-----------Email REGEX---------------
@@ -113,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity {
             userCellPhone.setError("Cell Must be in correct format.");
             isValid = false;
             //-----------Assignment 1 requirements, 2bii. username must be in correct format----------------
-        }else if(users.containsKey(userNameInput)) {
+        }else if(sharedPref.contains(userNameInput)) {
             userName.setError("Username already exists.");
             isValid = false;
         }
