@@ -3,10 +3,19 @@
     <string name="welcome_to_expense_tracker">Welcome to Expense Tracker!</string>
     <string name="authors">Hunter Davis &amp; Andre Barajas</string>
     <!-- SharedPreferences Key for user login data  -->
-    <string name="preference_file_key">com.example.expenseTracker.PREFERENCE_FILE_KEY</string>
     <!-- Preference Titles -->
     <string name="settings_header">Settings</string>
     <string name="about_header">About</string>
+    <string name="about_title">About the Developers</string>
+    <string name="summary_about">Created by Hunter Davis and Andre Barajas</string>
+    <string name="title_version">App Version</string>
+    <string name="app_version">1.0</string>
+
+    <string name="help_title">Help</string>
+    <string name="help_info">Use the app to visualize your saving and spending on an annual basis!
+    Input your annual income, monthly expenses, and annual savings goal to see if you can reach
+    your savings goal with your current expenses. Alter your monthly expenses to see how much
+    you can save after 12 months!</string>
 
     <!-- Preferences -->
     <string name="edit_username">Edit Username</string>

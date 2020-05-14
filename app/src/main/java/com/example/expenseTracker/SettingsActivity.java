@@ -30,14 +30,14 @@ public class SettingsActivity extends AppCompatActivity {
         username = intent.getStringExtra("USERNAME");
         System.out.println("USERNAME: " + username);
         password = intent.getStringExtra("PASSWORD");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        System.out.println("PASSWORD: " + password);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
                 .commit();
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(false);
         }
     }
 
@@ -47,7 +47,11 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreate(final Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.root_preferences);
-            // Binding the username and password fields to their value
+            // TODO: Check if pass is null, in which case we don't have the right username
+
+            PreferenceManager.getDefaultSharedPreferences(getContext()).getString("username", null);
+            String u = LoginActivity.getDefaults("username", getContext());
+            String p = LoginActivity.getDefaults("password", getContext());
             bindPreferenceSummaryToValue(findPreference("username"));
             bindPreferenceSummaryToValue(findPreference("password"));
         }
@@ -83,9 +87,7 @@ public class SettingsActivity extends AppCompatActivity {
                     }
 
                     // Get the current user logged in
-                    String currLogin = LoginActivity.users.get(username);
-                    String usr;
-                    System.out.println("PASSWORD: " + currLogin);
+
                 }
                 // Any other preference
                 else{

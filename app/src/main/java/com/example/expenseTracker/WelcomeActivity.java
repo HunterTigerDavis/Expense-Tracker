@@ -26,7 +26,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public static String income, expenses, savings;
     private String[] labels;
     private androidx.appcompat.widget.Toolbar toolbar;
-    private String username, password;
+    public static String username, password;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState){

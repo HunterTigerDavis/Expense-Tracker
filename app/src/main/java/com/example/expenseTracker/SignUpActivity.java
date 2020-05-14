@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "Sign Up";
@@ -24,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText userPassword0;
     private EditText userEmail;
     private EditText userCellPhone;
-    private HashMap<String, String> users;
+    //private HashMap<String, String> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -39,8 +40,8 @@ public class SignUpActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.emailField);
         userCellPhone = findViewById(R.id.phoneField);
         Intent intent = getIntent();
-        users = (HashMap<String, String>)intent.getSerializableExtra("users");
-        Log.w(TAG, "users: " + users);
+        //users = (HashMap<String, String>)intent.getSerializableExtra("users");
+        //Log.w(TAG, "users: " + users);
         //----------Setting up listener for sign up button, collect input----------------
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -62,9 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(!validateAllInputs(userNameInput, passwordInput, passwordInput0, emailInput, cellPhoneInput)) { return; }
         else {
             // Enter the user into our shared preferences if it passes
-            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString(userNameInput, passwordInput);
+            LoginActivity.setDefaults(userNameInput, passwordInput, getApplicationContext());
             // Write new entry to dictionary
             //LoginActivity.users.put(userNameInput, passwordInput);
 
@@ -75,7 +74,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     //-------------Project validation requirements--------------------------
     private boolean validateAllInputs(String userNameInput, String passwordInput,String passwordInput0,String emailInput,String cellPhoneInput) {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        // Retrieve the SharedPreferences
+        //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String userResult = LoginActivity.getDefaults(userNameInput, getApplicationContext());
         boolean isValid = true;
         //-----------Java util library for regex--------------
         //-----------Email REGEX---------------
@@ -88,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
         Matcher matcherForCell = patternForCell.matcher(cellPhoneInput);
         Log.w(TAG, "Checking regex for email " + matcherForEmail.matches());
         Log.w(TAG, "Checking regex for cell " + matcherForCell.matches());
-        Log.w(TAG, "does user exist? " + users.containsKey(userNameInput));
+        Log.w(TAG, "Does user already exist? (Null if false)" + userResult);
 
         //------------Assignment 1 requirements, 2bi. All fields must be filled----------------
         if (TextUtils.isEmpty(userNameInput)){
@@ -120,7 +121,8 @@ public class SignUpActivity extends AppCompatActivity {
             userCellPhone.setError("Cell Must be in correct format.");
             isValid = false;
             //-----------Assignment 1 requirements, 2bii. username must be in correct format----------------
-        }else if(sharedPref.contains(userNameInput)) {
+        // If the username already exists, they cannot sign up with the same one
+        }else if(!userResult.equals(null)) {
             userName.setError("Username already exists.");
             isValid = false;
         }

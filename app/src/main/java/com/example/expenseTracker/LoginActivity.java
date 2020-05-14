@@ -1,6 +1,7 @@
 package com.example.expenseTracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +12,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.*;
+import java.util.prefs.Preferences;
 
 public class LoginActivity extends AppCompatActivity {
 
     // Dictionary of users here:
-    public static HashMap<String, String> users = new HashMap();
+    //public static HashMap<String, String> users = new HashMap();
+
 
 
     @Override
@@ -23,10 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Storing user login data through SharedPreferences
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("user", "pass");
-        editor.commit();
+        setDefaults("user", "pass", getApplicationContext());
 
         //users.put("user", "pass"); // default login
         //System.out.println("User" + users.size());
@@ -37,6 +37,20 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(welcomeIntent);
         }
 
+    }
+
+    // Write to SharedPreferences
+    public static void setDefaults(String key, String value, Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    // Read from SharedPreferences
+    public static String getDefaults(String key, Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(key, null);
     }
 
     public void logIn(View view){
@@ -51,10 +65,10 @@ public class LoginActivity extends AppCompatActivity {
             completeToast.show();
         }
         else{ // If they complete both fields, validate with dictionary
-            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            String testUsername = sharedPref.getString(username, "Username DNE");
-            System.out.println("TEST USERNAME: " + testUsername);
-            if (!testUsername.equals("Username DNE")){
+            // If user doesn't exist, password will be null
+            String passResult = getDefaults(username, getApplicationContext());
+            System.out.println("TEST USERNAME: " + passResult);
+            if (!passResult.equals(null) && password.equals(passResult)){
                 // We pass
                 // Set user to logged in
                 SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
@@ -76,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void openSignUp(View view){
         Intent signUpIntent = new Intent(this, SignUpActivity.class);
-        signUpIntent.putExtra("users", this.users);
+        //signUpIntent.putExtra("users", this.users);
         startActivity(signUpIntent);
     }
 

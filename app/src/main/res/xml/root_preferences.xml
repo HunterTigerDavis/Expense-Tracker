@@ -19,17 +19,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/about_header">
+        <Preference
+            android:title="@string/about_title"
+            android:summary="@string/summary_about"/>
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+        <Preference
+            android:title="@string/title_version"
+            android:summary="@string/app_version" />
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+        <Preference
+            android:title="@string/help_title"
+            android:summary="@string/help_info"/>
 
     </PreferenceCategory>
 
