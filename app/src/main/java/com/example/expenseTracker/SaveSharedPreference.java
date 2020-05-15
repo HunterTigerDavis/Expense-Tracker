@@ -22,19 +22,17 @@ public class SaveSharedPreference {
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putBoolean(PreferencesUtility.LOGGED_IN_PREF, loggedIn);
         // Set which user is logged in
-        getPreferences(context).edit().putString("username", WelcomeActivity.username);
-        getPreferences(context).edit().putString("password", WelcomeActivity.password);
+        getPreferences(context).edit().putString("user_logged", WelcomeActivity.username);
+        getPreferences(context).edit().putString("pass_logged", WelcomeActivity.password);
         editor.apply();
     }
-
-
 
     /**
      * Get the current Login status
      */
     public static boolean getLoggedStatus(Context context){
-        System.out.println("USER LOGGED IN: " + getPreferences(context).getString("username", "<unset>"));
-        System.out.println("PASS LOGGED IN: " + getPreferences(context).getString("password", "<unset>"));
+        System.out.println("USER LOGGED IN: " + getPreferences(context).getString("user_logged", "<unset>"));
+        System.out.println("PASS LOGGED IN: " + getPreferences(context).getString("pass_logged", "<unset>"));
 
         return getPreferences(context).getBoolean(PreferencesUtility.LOGGED_IN_PREF, false);
     }

@@ -17,6 +17,9 @@ import java.util.regex.Pattern;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+/**
+ * This Activity is where the user can create a new account with username and password
+ */
 public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "Sign Up";
     private Button signUpButton;
@@ -64,8 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
         else {
             // Enter the user into our shared preferences if it passes
             LoginActivity.setDefaults(userNameInput, passwordInput, getApplicationContext());
-            // Write new entry to dictionary
-            //LoginActivity.users.put(userNameInput, passwordInput);
+
 
             Intent loginIntent = new Intent(this, LoginActivity.class);
             startActivity(loginIntent);
@@ -95,34 +97,34 @@ public class SignUpActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(userNameInput)){
             userName.setError("All Fields Are Required.");
             isValid = false;
-        }else if(TextUtils.isEmpty(passwordInput)){
+        }if(TextUtils.isEmpty(passwordInput)){
             userPassword.setError("All Fields Are Required.");
             isValid = false;
-        }else if(TextUtils.isEmpty(passwordInput0)){
+        }if(TextUtils.isEmpty(passwordInput0)){
             userPassword0.setError("All Fields Are Required.");
             isValid = false;
-        }else if(TextUtils.isEmpty(emailInput)){
+        }if(TextUtils.isEmpty(emailInput)){
             userEmail.setError("All Fields Are Required.");
             isValid = false;
-        }else if(TextUtils.isEmpty(cellPhoneInput)){
+        }if(TextUtils.isEmpty(cellPhoneInput)){
             userCellPhone.setError("All Fields Are Required.");
             isValid = false;
 
             //-----------Assignment 1 requirements, 2biii. Password and retype password must be the same----------------
-        }else if(passwordInput.compareTo(passwordInput0) !=0) {
+        }if(passwordInput.compareTo(passwordInput0) !=0) {
             userPassword.setError("Passwords must match");
             isValid = false;
             //-----------Assignment 1 requirements, 2biv. email must be in correct format----------------
-        }else if(!matcherForEmail.matches()) {
+        }if(!matcherForEmail.matches()) {
             userEmail.setError("Email Must be in correct format.");
             isValid = false;
             //-----------Assignment 1 requirements, 2biv. phone must be in correct format----------------
-        }else if(!matcherForCell.matches()) {
+        }if(!matcherForCell.matches()) {
             userCellPhone.setError("Cell Must be in correct format.");
             isValid = false;
             //-----------Assignment 1 requirements, 2bii. username must be in correct format----------------
         // If the username already exists, they cannot sign up with the same one
-        }else if(!userResult.equals(null)) {
+        }if(userResult != null) {
             userName.setError("Username already exists.");
             isValid = false;
         }

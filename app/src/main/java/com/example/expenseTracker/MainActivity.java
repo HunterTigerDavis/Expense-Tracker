@@ -7,10 +7,13 @@ import android.os.Handler; // for splash screen
 import androidx.appcompat.app.AppCompatActivity;
 
 
+/**
+ * The MainActivity is where we display the splash screen when the app is opened
+ */
 public class MainActivity extends AppCompatActivity {
 
     // For splash screen:
-    private static int splash_time_out = 1000;
+    private static int splash_time_out = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

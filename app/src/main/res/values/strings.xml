@@ -16,6 +16,9 @@
     Input your annual income, monthly expenses, and annual savings goal to see if you can reach
     your savings goal with your current expenses. Alter your monthly expenses to see how much
     you can save after 12 months!</string>
+    <string name="default_user">default_user</string>
+    <string name="default_pass">default_pass</string>
+
 
     <!-- Preferences -->
     <string name="edit_username">Edit Username</string>

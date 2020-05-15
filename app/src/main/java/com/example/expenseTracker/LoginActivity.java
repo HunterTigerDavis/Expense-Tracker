@@ -14,6 +14,9 @@ import android.widget.Toast;
 import java.util.*;
 import java.util.prefs.Preferences;
 
+/**
+ * This Activity is where the users login after the splash screen if they are not currently logged in
+ */
 public class LoginActivity extends AppCompatActivity {
 
     // Dictionary of users here:
@@ -28,9 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         // Storing user login data through SharedPreferences
         setDefaults("user", "pass", getApplicationContext());
 
-        //users.put("user", "pass"); // default login
-        //System.out.println("User" + users.size());
-
         // Check if the user is already logged in, if so we skip the login screen and go to welcome
         if (SaveSharedPreference.getLoggedStatus(getApplicationContext())){
             Intent welcomeIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
@@ -43,8 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     public static void setDefaults(String key, String value, Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(key, value);
-        editor.commit();
+        editor.putString(key, value).apply();
     }
 
     // Read from SharedPreferences
@@ -68,13 +67,15 @@ public class LoginActivity extends AppCompatActivity {
             // If user doesn't exist, password will be null
             String passResult = getDefaults(username, getApplicationContext());
             System.out.println("TEST USERNAME: " + passResult);
-            if (!passResult.equals(null) && password.equals(passResult)){
+            if (password.equals(passResult)){
                 // We pass
                 // Set user to logged in
                 SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+                setDefaults("user_logged", username, getApplicationContext());
+                setDefaults("pass_logged", password, getApplicationContext());
                 Intent welcomeIntent = new Intent(this, WelcomeActivity.class);
-                welcomeIntent.putExtra("USERNAME", username);
-                welcomeIntent.putExtra("PASSWORD", password);
+//                welcomeIntent.putExtra("USERNAME", username);
+//                welcomeIntent.putExtra("PASSWORD", password);
                 startActivity(welcomeIntent);
             }
             else{
