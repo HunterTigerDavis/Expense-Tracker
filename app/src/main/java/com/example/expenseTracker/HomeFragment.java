@@ -168,7 +168,7 @@ public class HomeFragment extends Fragment {
         GraphView graphView2 = view.findViewById(R.id.graph_view2);
         graphView2.setGraph(barGraph);
         TextView graph2Label = view.findViewById(R.id.graph_view_label2);
-        graph2Label.setText("Expenses vs Savings (TEST)");
+        graph2Label.setText("Expenses vs Savings (Monthly)");
 
         // End of function
         return view;
